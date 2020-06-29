@@ -1,0 +1,1 @@
+<?php return ['phone'=>88110603,'email'=>'webmail.zuvhunelectorat.mn','fax'=>'','video-code'=>'T5LdiE3tYF4']?>

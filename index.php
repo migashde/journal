@@ -1,3 +1,3 @@
 <?php
-require 'code/init.php';
+require 'include/initer.php';
 ?>

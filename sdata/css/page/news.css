@@ -1,0 +1,49 @@
+.articles{background:#F2EEF9;}
+.articles>.center{position:relative;}
+.articles .pnn{position:absolute;bottom:20px;left:0;right:0;}
+.articles .pnn>a.near{display:block;position:absolute;bottom:0;width:160px;z-index:999;text-align:center;color:#000;background:#fff;}
+.articles .pnn>a.near>img{width:100%;display:block;}
+.articles .pnn>a.near.next{right:0;}
+.articles .pnn>a.near>b{font-weight:200;display:block;padding:5px;}
+.articles .pnn>a.near:hover{text-decoration:none;background:none;}
+.articles .list{display:flex;flex-flow:row wrap;justify-content:center;align-items:stretch;margin-right:-20px;}
+.articles .list.videos{padding:40px 80px;margin:0 auto;width:100%;max-width:700px;display:block;background:#fff;}
+.articles .list.videos>.video{width:100%;}
+.articles .list.videos>.video embed{width:100% !important;height:314px !important;}
+.articles .list .item{width:285px;background:#fff;margin-right:20px;margin-bottom:20px;flex-shrink:0;}
+.articles .list .item>a{color:#000;}
+.articles .list .item>a:hover{text-decoration:none;}
+.articles .list .item img{width:100%;display:block;border-bottom:1px solid #ddd;}
+.articles .list .item b,.articles .list .item p{display:block;padding:15px;margin:0;}
+.articles .list .item b{font-weight:100;}
+.news-body{background:#fff;max-width:800px;margin:20px auto;padding:40px;-ms-box-sizing:border-box;-khtml-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
+.news-body>h2{font-size:32px;margin-top:0;font-weight:400;padding-bottom:40px;border-bottom:1px solid #FECF05;}
+.news-body img{width:100%;cursor:pointer;height:auto !important;}
+.news-body .content{text-align:justify;}
+.news-body .content ul li,.news-body .content ol li{line-height:150%;text-align:justify;color:#444;padding:5px 0;}
+.news-body .content img{max-width:100%;-ms-box-sizing:border-box;-khtml-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.news-body .content img.l,.news-body .content .img.l{float:left;margin-right:10px;}
+.news-body .content img.r,.news-body .content .img.r{float:right;margin-left:10px;}
+.news-body .content img.c,.news-body .content .img.c{display:block;margin:10px auto;text-align:center;}
+.news-body .content embed,.news-body .content iframe{max-width:100%;}
+.news-body .content .img{padding:0;border:1px solid #ddd;margin-bottom:20px;}
+.news-body .content .img>img{border:none;display:block;margin:0 auto;}
+.news-body .content .img>p{background:#f8f8f8;margin:0;padding:5px 8px;font-size:12px;color:#444;line-height:130%;text-indent:0;}
+.news-body .content p{line-height:150%;color:#444;text-indent:30px;font-size:15px;}
+.news-body .content p:first-child{margin-top:0;}
+.news-body .content p:last-child{margin-bottom:0;}
+iframe{border:none;width:100%;height:330px;}
+.sharer{position:absolute;top:100px;left:-40px;padding:0 !important;}
+.sharer>a{display:block;-ms-box-sizing:border-box;-khtml-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:40px;height:40px;margin-bottom:4px;cursor:pointer;position:relative;overflow:hidden;line-height:40px;white-space:nowrap;color:#fff;padding-left:40px;font-size:18px;background:#fff;}
+.sharer>a:after{content:'';display:block;width:30px;height:30px;top:5px;left:5px;position:absolute;background:url("../img/soic.png") no-repeat;}
+.sharer>a:hover{text-decoration:none;padding-right:10px;width:auto;}
+.sharer>a.fb:after{background-position:center -30px;}
+.sharer>a.tw:after{background-position:left -30px;}
+.sharer>a.fb:hover{background:#3A579A;}
+.sharer>a.fb:hover:after{background-position:center -90px;}
+.sharer>a.tw:hover{background:#00ABF0;}
+.sharer>a.tw:hover:after{background-position:left -90px;}
+.tab{text-align:center;margin-bottom:20px;}
+.tab>a{display:inline-block;background:#fff;color:#222;height:30px;line-height:30px;padding:0 10px;cursor:pointer;margin:0 5px;}
+.tab>a:hover{text-decoration:none;background:#eee;}
+.tab>a.active{background:#6D3290;color:#fff;}

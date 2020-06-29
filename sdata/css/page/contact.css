@@ -1,0 +1,28 @@
+.contact{background:#F2EEF9;position:relative;}
+.contact:before{content:'';position:absolute;left:0;top:0;bottom:0;width:50%;background:#fff;}
+.contact>.center{padding:0;}
+.cover{height:600px;background:url("../img/tug.jpg") center center no-repeat #FECF05;background-size:cover;position:relative;}
+.cover>h4{position:absolute;bottom:20px;left:50%;-ms-transform:translateX(-50%);-khtml-transform:translateX(-50%);-webkit-transform:translateX(-50%);-o-transform:translateX(-50%);-moz-transform:translateX(-50%);transform:translateX(-50%);font-size:50px;margin:0;color:#6D3290;font-weight:200;text-transform:uppercase;}
+.col{display:flex;justify-content:stretch;}
+.col>div{width:50%;-ms-box-sizing:border-box;-khtml-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px 40px;}
+.col>div.form{background:#F2EEF9;}
+.col>div.form>form{padding:50px 0;}
+.col>div.form .fld{margin-bottom:40px;background:#fff;border:none;-ms-border-radius:0;-khtml-border-radius:0;-webkit-border-radius:0;-o-border-radius:0;-moz-border-radius:0;border-radius:0;display:block;}
+.col>div.form input.fld{width:46%;}
+.col>div.form input.fld:nth-of-type(2n-1){margin-right:8%;float:left;}
+.col>div.form textarea.fld{max-height:200px;min-height:50px;height:80px;}
+.contact .contact-us{background:#fff;}
+.contact .contact-us>div{padding:40px 0;}
+.contact .contact-us>div>div{padding:10px 0;position:relative;padding-left:30px;}
+.contact .contact-us>div>div:before{content:'';width:20px;height:20px;top:50%;-ms-transform:translateY(-50%);-khtml-transform:translateY(-50%);-webkit-transform:translateY(-50%);-o-transform:translateY(-50%);-moz-transform:translateY(-50%);transform:translateY(-50%);left:0;background:url("../img/cics.png") center top no-repeat;position:absolute;}
+.contact .contact-us>div>div.web:before{background-position:center -20px;}
+.contact .contact-us>div>div.phone:before{background-position:center -40px;}
+.contact .contact-us>div>div.email:before{background-position:center -60px;}
+.contact .contact-us>div>div.rss:before{background-position:center -80px;}
+.contact .contact-us>div>div.twitter:before{background-position:center -100px;}
+.contact .contact-us>div>div.youtube:before{background-position:center -120px;}
+.contact .contact-us>div>div.facebook:before{background-position:center -140px;}
+.contact .contact-us>div>div.instagram:before{background-position:center -160px;}
+.contact .contact-us>div>div.linkedin:before{background-position:center -180px;}
+.contact .contact-us>div>div.fax:before{background-position:center bottom;}
+.msg{background:#fff;padding:10px;border-left:2px solid #FECF05;margin-bottom:40px;color:#6D3290;}

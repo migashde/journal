@@ -1,0 +1,6 @@
+body{margin:10px;font-size:13px;font-family:tahoma;}
+p,ul,ol{margin:5px 0;}
+p:first-child,ol:first-child,ul:first-child{margin-top:0;}
+p:last-child,ol:last-child,ul:last-child{margin-bottom:0;}
+ul,ol{padding-left:12px;}
+ul>li,ol>li{line-height:180%;}

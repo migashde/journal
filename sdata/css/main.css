@@ -1,0 +1,35 @@
+.main-body{padding-top:100px;}
+.center{max-width:1200px;margin:0 auto;position:relative;padding:1px 0;}
+.header{color:#fff;position:fixed;left:0;right:0;line-height:20px;z-index:8888;background:#fff;top:0;-ms-box-shadow:0 2px 2px rgba(0,0,0,0.2);-khtml-box-shadow:0 2px 2px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 2px rgba(0,0,0,0.2);-o-box-shadow:0 2px 2px rgba(0,0,0,0.2);-moz-box-shadow:0 2px 2px rgba(0,0,0,0.2);box-shadow:0 2px 2px rgba(0,0,0,0.2);}
+.header>.center{height:100px;-ms-box-sizing:border-box;-khtml-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:20px 0;}
+.header>.center a.logo{display:block;left:0;top:0;position:absolute;height:100px;width:150px;background:url("img/logo.png") center center no-repeat;background-size:cover;}
+.header>.center>.menu{position:absolute;right:0;top:0;bottom:0;line-height:100px;}
+.header>.center>.menu ul{list-style:none;padding:0;margin:0;display:inline-flex;}
+.header>.center>.menu ul>li{padding:0 10px;vertical-align:middle;position:relative;}
+.header>.center>.menu ul>li>a{display:block;text-align:center;font-weight:bold;font-weight:400;text-transform:uppercase;}
+.header>.center>.menu ul ul{display:none;position:absolute;top:100%;left:0;background:#fff;-ms-box-shadow:2px 2px 5px rgba(0,0,0,0.4);-khtml-box-shadow:2px 2px 5px rgba(0,0,0,0.4);-webkit-box-shadow:2px 2px 5px rgba(0,0,0,0.4);-o-box-shadow:2px 2px 5px rgba(0,0,0,0.4);-moz-box-shadow:2px 2px 5px rgba(0,0,0,0.4);box-shadow:2px 2px 5px rgba(0,0,0,0.4);}
+.header>.center>.menu ul ul>li{display:block;border-bottom:1px solid #ddd;height:auto;white-space:nowrap;padding:0;line-height:1;}
+.header>.center>.menu ul ul>li:last-child{border-bottom:none;}
+.header>.center>.menu ul ul>li>a{display:block;padding:8px 10px;text-transform:uppercase;font-weight:400;text-align:left;}
+.header>.center>.menu ul ul>li>a:hover{text-decoration:none;background:#F2EEF9;color:#6D3290;}
+.header>.center>.menu ul>li:hover>ul{display:block;}
+.header>.center>.menu a.donate{background:#6D3290;color:#fff;padding:0 10px;text-transform:uppercase;font-size:18px;font-weight:900;display:inline-block;height:40px;line-height:40px;cursor:pointer;-ms-border-radius:6px;-khtml-border-radius:6px;-webkit-border-radius:6px;-o-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}
+.header>.center>.menu a.donate:hover{text-decoration:none;}
+.footer{background:#6D3290;padding:0;color:#fff;}
+.footer>.center{position:relative;padding:50px 0;}
+.footer>.center .logo{width:100px;height:100px;background:url("img/logof.png") center center no-repeat;background-size:contain;display:block;position:absolute;right:0;top:50%;-ms-transform:translateY(-50%);-khtml-transform:translateY(-50%);-webkit-transform:translateY(-50%);-o-transform:translateY(-50%);-moz-transform:translateY(-50%);transform:translateY(-50%);}
+#totop{position:fixed;bottom:-50px;right:-50px;width:50px;height:50px;-ms-box-shadow:0 0 15px rgba(0,0,0,0.1);-khtml-box-shadow:0 0 15px rgba(0,0,0,0.1);-webkit-box-shadow:0 0 15px rgba(0,0,0,0.1);-o-box-shadow:0 0 15px rgba(0,0,0,0.1);-moz-box-shadow:0 0 15px rgba(0,0,0,0.1);box-shadow:0 0 15px rgba(0,0,0,0.1);-ms-border-radius:6px;-khtml-border-radius:6px;-webkit-border-radius:6px;-o-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background:#FECF05;cursor:pointer;-ms-opacity:0;-khtml-opacity:0;-webkit-opacity:0;-o-opacity:0;-moz-opacity:0;opacity:0;filter:Alpha(Opacity=0);-ms-filter:Alpha(Opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";-ms-transition:all 300ms ease-in-out;-khtml-transition:all 300ms ease-in-out;-webkit-transition:all 300ms ease-in-out;-o-transition:all 300ms ease-in-out;-moz-transition:all 300ms ease-in-out;transition:all 300ms ease-in-out;z-index:-1;}
+#totop:after,#totop:before{width:15px;height:4px;-ms-border-radius:2px;-khtml-border-radius:2px;-webkit-border-radius:2px;-o-border-radius:2px;-moz-border-radius:2px;border-radius:2px;background:#111;position:absolute;content:'';left:50%;top:50%;-ms-transform-origin:center center;-khtml-transform-origin:center center;-webkit-transform-origin:center center;-o-transform-origin:center center;-moz-transform-origin:center center;transform-origin:center center;-ms-transform:rotate(-45deg);-khtml-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-o-transform:rotate(-45deg);-moz-transform:rotate(-45deg);transform:rotate(-45deg);margin-left:-12px;}
+#totop:before{-ms-transform:rotate(45deg);-khtml-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);-moz-transform:rotate(45deg);transform:rotate(45deg);margin-left:-3px;}
+#totop.sh{-ms-opacity:1;-khtml-opacity:1;-webkit-opacity:1;-o-opacity:1;-moz-opacity:1;opacity:1;filter:Alpha(Opacity=100);-ms-filter:Alpha(Opacity=100);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";bottom:20px;right:20px;z-index:999;}
+.title,.center>h3{text-align:center;text-transform:uppercase;margin:20px 0;padding-bottom:15px;position:relative;font-weight:300;font-size:24px;}
+.title:after,.title:before,.center>h3:after,.center>h3:before{content:'';position:absolute;bottom:0;left:50%;width:50%;-ms-transform:translateX(-50%);-khtml-transform:translateX(-50%);-webkit-transform:translateX(-50%);-o-transform:translateX(-50%);-moz-transform:translateX(-50%);transform:translateX(-50%);height:1px;background:#FECF05;}
+.title:before,.center>h3:before{background:#6D3290;z-index:1;width:80px;}
+.dfl{display:flex;}
+.page{background:#F2EEF9;}
+.page>.center{max-width:800px;background:#fff;}
+.page .content{padding:40px;text-align:justify;color:#333;line-height:140%;}
+.page .content p{text-indent:30px;}
+.page .content p:first-child{margin-top:0;}
+.page .content p:last-child{margin-bottom:0;}
+.banner{position:fixed;top:110px;left:50%;width:120px;height:500px;background:url("img/donatebnr.jpg") center center no-repeat #FECF05;cursor:pointer;-ms-box-shadow:1px 1px 5px rgba(0,0,0,0.3);-khtml-box-shadow:1px 1px 5px rgba(0,0,0,0.3);-webkit-box-shadow:1px 1px 5px rgba(0,0,0,0.3);-o-box-shadow:1px 1px 5px rgba(0,0,0,0.3);-moz-box-shadow:1px 1px 5px rgba(0,0,0,0.3);box-shadow:1px 1px 5px rgba(0,0,0,0.3);}

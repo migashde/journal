@@ -1,9 +1,22 @@
 <IfModule mod_rewrite.c>
+Header set Access-Control-Allow-Origin *
+Header set Access-Control-Allow-Methods "POST, GET, PUT, DELETE, OPTIONS"
+Header set Access-Control-Allow-Credentials "true"
 RewriteEngine On
-RewriteBase /biznetwork/
+RewriteCond %{HTTP_HOST} ^%{SERVER_NAME}
+RewriteRule ^.*$ http://www.%{SERVER_NAME}%{REQUEST_URI} [R,L]
+RewriteBase /electorat/
 RewriteCond %{REQUEST_URI} !^/index.php
 RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !/(data|uploads)/.*
-RewriteRule .* $1 [NE,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !/(font|img|u|c|n|e|f)/.* 
+RewriteRule !(\.(cs|j))$ $1 [NE,L]
+
+RewriteRule ^(.*)\.cs$ sdata/css/$1.css [NE,L]
+RewriteRule ^(.*)\.j$ sdata/js/$1.js [NE,L]
+RewriteCond %{REQUEST_URI} ^/journal/(img|font)/.*
+RewriteRule ^(.*)$ sdata/$1 [NE,L]
+
+RewriteCond %{REQUEST_URI} ^/journal/(u|c|n|e|f)/.*
+RewriteRule ^(.*)$ sdata/file/$1 [NE,L]
 </IfModule>

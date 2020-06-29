@@ -1,0 +1,7 @@
+body{padding:0;margin:0;}
+.login{position:fixed;left:0;bottom:0;top:0;right:0;background:#6D3290;}
+.handler{position:absolute;left:120px;top:50%;background:rgba(255,255,255,0.4);width:240px;padding:20px;-ms-box-shadow:2px 2px 4px rgba(0,0,0,0.1);-khtml-box-shadow:2px 2px 4px rgba(0,0,0,0.1);-webkit-box-shadow:2px 2px 4px rgba(0,0,0,0.1);-o-box-shadow:2px 2px 4px rgba(0,0,0,0.1);-moz-box-shadow:2px 2px 4px rgba(0,0,0,0.1);box-shadow:2px 2px 4px rgba(0,0,0,0.1);}
+.handler a.logo{display:block;width:100px;height:100px;background:url("img/logo.png") center center no-repeat #fff;background-size:contain;margin:0 auto;margin-bottom:30px;-ms-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px;-o-border-radius:10px;-moz-border-radius:10px;border-radius:10px;}
+.handler .fld{background:rgba(255,255,255,0.2);margin-bottom:8px;color:#222;border-width:1px;}
+.handler input[type="submit"]{display:block;width:200px;text-align:center;background:notset;color:#fff;border:none;margin-top:20px;padding:0;cursor:pointer;height:30px;line-height:30px;}
+.handler input[type="checkbox"]{margin-left:0;}
