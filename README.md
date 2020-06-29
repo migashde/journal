@@ -1,2 +1,2 @@
-# biznetwork
+# Journal site test
  desc
