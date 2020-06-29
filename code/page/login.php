@@ -1,10 +1,9 @@
 <?php
 
-  require_once "functions/db.php";
-  require_once "functions/loggedin.php";
+
 
   if ($loggedin == true) {
-    header("Location: /test/index.php");
+    header("Location: ".$folder);
   }
 
  
@@ -12,7 +11,7 @@ if (isset($_GET['url'])) {
   $prev_url = $_GET['url'];
   
 } else {
-  $prev_url = '/test/index.php';
+  $prev_url = $folder;
 }
 $error = '';
 if (isset($_GET['error'])) {
@@ -28,7 +27,7 @@ if (isset($_GET['error'])) {
   <section class="midform">
     <h3 class="b-title">Нэвтрэх хэсэг</h3>
     <?php if($error!=''){echo '<p style="color:brown">'.$error.'</p>';}?>
-      <form action="functions/login.php" method="post">
+      <form action="functions/login" method="post">
         <input type="hidden" name="prev_url" value="<?php echo $prev_url;?>">
         <div class="form-group">
           <label>Имэйл эсвэл утасны дугаар:</label>

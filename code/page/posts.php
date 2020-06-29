@@ -1,21 +1,10 @@
 <?php
 
-  require_once "functions/db.php";
-
-
-if (isset($_GET['cat'])) {
-  $catid = $_GET['cat'];
-
-  $sql = "SELECT * FROM articles WHERE cat_id='$catid'";
+  $sql = 'SELECT * FROM articles ORDER BY id DESC';
   $query = mysqli_query($connection, $sql);
-  
-} else {
-  header('Location:index.php');
-}
+
 ?>
-<?php 
-  include("header.php");
-?>
+
 <main id="main" class="wrapper" role="main">
   <section id="contents">
     <?php
@@ -32,7 +21,7 @@ if (isset($_GET['cat'])) {
         $str = wordwrap($str, 28);
         $str = explode("\n", $str);
         $str = $str[0] . '...';
-        echo '<a href="article.php?id='.$row["id"].'">
+        echo '<a href="post?id='.$row["id"].'">
         <article class="post">
           <div class="post-image" style="background: url(/test/uploads/images/image_'.$row["media"].') center center;background-size: cover; ">
           </div>
@@ -47,12 +36,9 @@ if (isset($_GET['cat'])) {
     }
     ?>
   </section>
-  <section id="sidebar">
+  <section id="sidebar"> 
     <?php 
       include("sidebar.php");
     ?>
   </section>
 </main>
-<?php 
-  include("footer.php");
-?>

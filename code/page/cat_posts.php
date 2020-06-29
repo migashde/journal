@@ -1,13 +1,14 @@
 <?php
 
-  require_once "functions/db.php";
+if (isset($_GET['cat'])) {
+  $catid = $_GET['cat'];
 
-  $sql = 'SELECT * FROM articles ORDER BY id DESC';
+  $sql = "SELECT * FROM articles WHERE cat_id='$catid'";
   $query = mysqli_query($connection, $sql);
-
-?>
-<?php 
-  include("header.php");
+  
+} else {
+  header('Location:index.php');
+}
 ?>
 <main id="main" class="wrapper" role="main">
   <section id="contents">
@@ -25,7 +26,7 @@
         $str = wordwrap($str, 28);
         $str = explode("\n", $str);
         $str = $str[0] . '...';
-        echo '<a href="article.php?id='.$row["id"].'">
+        echo '<a href="post?id='.$row["id"].'">
         <article class="post">
           <div class="post-image" style="background: url(/test/uploads/images/image_'.$row["media"].') center center;background-size: cover; ">
           </div>
@@ -40,12 +41,9 @@
     }
     ?>
   </section>
-  <section id="sidebar"> 
+  <section id="sidebar">
     <?php 
       include("sidebar.php");
     ?>
   </section>
 </main>
-<?php 
-  include("footer.php");
-?>
