@@ -23,7 +23,7 @@
         $str = $str[0] . '...';
         echo '<a href="post?id='.$row["id"].'">
         <article class="post">
-          <div class="post-image" style="background: url(/test/uploads/images/image_'.$row["media"].') center center;background-size: cover; ">
+          <div class="post-image" style="background: url('.$folder.'/data/uploads/images/image_'.$row["media"].') center center;background-size: cover; ">
           </div>
           <div class="post-content">
             <h2 class="post-title">'.$row["title"].'</h2>

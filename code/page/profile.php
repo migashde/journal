@@ -1,10 +1,7 @@
 <?php
 
-  require_once "functions/db.php";
-  require_once "functions/loggedin.php";
-
   if ($loggedin == false) {
-    header("Location: /test/login.php");
+    header('Location: '.$folder.'/login');
   }
 
   $error = '';
@@ -23,14 +20,11 @@
   $profs = mysqli_query($connection, $sql2);
 
 ?>
-<?php 
-  include("header.php");
-?>
 <main id="main" class="wrapper" role="main">
   <section class="midform">
     <h3 class="b-title">Бүртгүүлэх хэсэг</h3>
     <?php if($error!=''){echo '<p style="color:brown">'.$error.'</p>';}?>
-      <form id="upform" name="upform" action="functions/update_profile.php" method="post" onsubmit="return validateform()">
+      <form id="upform" name="upform" action="functions/update_profile" method="post" onsubmit="return validateform()">
         <?php while ($row = mysqli_fetch_array($query)) {
           echo '<input type="hidden" name="id" value="'.$row['id'].'"><div class="form-group">
           <label for="name">Овог:</label>
@@ -241,19 +235,6 @@ $per3 = substr($row["personal_id"], 2, 8);
       </form>
   </section>
 </main>
-<footer id="footer">
-  <div class="wrapper">
-
-    <ul class="footer-nav">
-        <a href="#">Эхлэл</a>
-        <a href="#">Эхлэл</a>
-    </ul>
-    <div class="copy">
-      &copy; Miga's journal 2020
-      All rights reserved.
-    </div>
-  </div>
-</footer>
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -356,5 +337,3 @@ function myFunction() {
   }
 }
 </script>
-</body>
-</html>

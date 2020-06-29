@@ -30,13 +30,13 @@ if (isset($_GET['id'])) {
           echo '<article class="post-single">
                 <h1 class="single-title">'.$row['title'].'</h1>
    
-                <div class="single-meta"><time class="timeago" datetime="'.$row['created_date'].'">'.$row['created_date'].'</time></a>, Ангилал: <a href="blog.php?cat='.$row['cat_id'].'">';
+                <div class="single-meta"><time class="timeago" datetime="'.$row['created_date'].'">'.$row['created_date'].'</time></a>, Ангилал: <a href="cat_posts?cat='.$row['cat_id'].'">';
                 while ($row3 = mysqli_fetch_assoc($query3)) {
                   echo $row3['name'];
                 }
 
                 echo '</a></div>
-              <img class="single-img" src="/test/uploads/images/image_'.$row["media"].'" alt="" />
+              <img class="single-img" src="'.$folder.'/data/uploads/images/image_'.$row["media"].'" alt="" />
             <div class="single-body">'.$row['content'].'
 
             

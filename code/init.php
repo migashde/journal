@@ -14,13 +14,24 @@ if($_SERVER['QUERY_STRING'] != '') {
 if ($path == '') {
 	$path = 'posts';
 }
-$myPath=ROOT.'page'.DS.$path.'.php';
 
 ob_start();
 $aCss=$aJs=[];
+$tpl = '';
 
 require_once "config.php";
 session_start();
+
+if(substr($path,0,5) === 'admin') {
+	if(!isset($_SESSION['login']) || empty($_SESSION['login']) || $_SESSION['type'] != 'admin'){
+		$path = 'login';
+    } else {
+    	$tpl = 'admin';
+    	if($path === 'admin'){
+    		$path = 'admin/index';
+    	}
+    }
+}
 
 global $loggedin;
 if(!isset($_SESSION['login']) || empty($_SESSION['login'])){
@@ -29,6 +40,8 @@ if(!isset($_SESSION['login']) || empty($_SESSION['login'])){
   $loggedin = true;
 }
 
+$myPath=ROOT.'page'.DS.$path.'.php';
+
 if(file_exists($myPath)){
 	require_once $myPath;
 }
@@ -36,6 +49,6 @@ else{
 	require_once ROOT.'page'.DS.'notfound.php';
 }
 $siteContent=ob_get_clean();
-require ROOT.'_tpl.php';
+require ROOT.'_tpl'.$tpl.'.php';
 
 ?>
