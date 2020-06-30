@@ -1,5 +1,12 @@
-<div class="footer"><div class="center">
-<a href="" class="logo"></a>
-"Зөв Хүн Электорат" эвсэл. &copy; 2020 он
-</div></div>
-<div id="totop"></div>
+<footer id="footer">
+  <div class="wrapper">
+    <ul class="footer-nav">
+        <a href="#">Эхлэл</a>
+        <a href="#">Эхлэл</a>
+    </ul>
+    <div class="copy">
+      &copy; Miga's journal 2020
+      All rights reserved.
+    </div>
+  </div>
+</footer>

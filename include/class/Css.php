@@ -8,7 +8,7 @@ class Css{
 	private $result		= '';
 	private $allRes		= '';
 	public  $ext		= 'cs';
-	private $measure	= 'px';
+	private $measure	= 'rem';
 	private $cssExt		= 'css';
 	private $beautify	= false;
 	private $path		= '';

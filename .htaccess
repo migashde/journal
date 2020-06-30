@@ -5,7 +5,7 @@ Header set Access-Control-Allow-Credentials "true"
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^%{SERVER_NAME}
 RewriteRule ^.*$ http://www.%{SERVER_NAME}%{REQUEST_URI} [R,L]
-RewriteBase /electorat/
+RewriteBase /journal/
 RewriteCond %{REQUEST_URI} !^/index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

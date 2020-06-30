@@ -21,23 +21,23 @@ $CONF=[
 	'database'			=> [
 		'charset'		=> 'utf8mb4',
 		'collation'		=> 'utf8mb4_general_ci',
-		'prefix'		=> 'elect_',
+		'prefix'		=> '',
 		'suffix'		=> '',
 		'conf'			=> [
 			'curr'			=> 'local',
 			'local'			=> [
 				'host'			=> 'localhost',
 				'port'			=> 3306,
-				'base'			=> 'electorat',
+				'base'			=> 'test',
 				'user'			=> 'root',
 				'pass'			=> ''
 			],
 			'remote'		=> [
 				'host'			=> 'localhost',
 				'port'			=> 3306,
-				'base'			=> 'zuvhuts3_electorat',
-				'user'			=> 'zuvhuts3_root',
-				'pass'			=> 'lHo[*;9HsQ&?o_#{]E'
+				'base'			=> 'test',
+				'user'			=> 'root',
+				'pass'			=> ''
 			]
 		]
 	]

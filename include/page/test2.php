@@ -1,16 +1,20 @@
 <?php
-$query=$this->db->fetch('SELECT * FROM articles ORDER BY id DESC');
+
+if (isset($_GET['cat'])) {
+  $catid = $_GET['cat'];
+  $query=$this->db->fetch("SELECT * FROM articles WHERE cat_id='$catid'");
+} else {
+  header('Location:');
+}
+
 ?>
 <main id="main" class="wrapper" role="main">
   <section id="contents">
     <?php
     if (mysqli_num_rows($query)==0) {
-      echo "<b style='color:brown;'>Уучлаарай одоогоор нийтлэл алга байна. Та дараа дахин шалгана уу! </b> <br><br>";
-    }
-    else
-    {
-      while ($row=mysqli_fetch_array($query)) {
-		
+		echo "<b style='color:brown;'>Уучлаарай одоогоор нийтлэл алга байна. Та дараа дахин шалгана уу! </b> <br><br>";
+    } else {
+		while ($row=mysqli_fetch_array($query)) {
 		$query4=$this->db->fetch('SELECT * FROM article_cats WHERE id = '.$row['cat_id'].'');
 
         $str = $row["content"];
@@ -28,7 +32,7 @@ $query=$this->db->fetch('SELECT * FROM articles ORDER BY id DESC');
           </div>
         </article>
         </a>';
-      }
+		}
     }
     ?>
   </section>

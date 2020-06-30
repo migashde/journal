@@ -14,15 +14,13 @@ $inAdmin=ADMURL==$f;
 	<link href="img/favicon.png" rel="shortcut icon" type="image/png" />
 	<meta name="viewport" content="width=device-width<?=$this->html->G['scalable']||isset($_SESSION['fullsite'])?'':',initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'?>" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?
 $target=$inAdmin?'admin':'main';
-array_unshift($this->html->A['css'],'style');
-array_unshift($this->html->A['css'],'tools/swiper');
 array_unshift($this->html->A['css'],$target);
 array_unshift($this->html->A['js'],$target);
 $suf=$this->coding?'?'.rand(1,999):($edited?'?'.$edited:'');
-$this->html->css('mobile');
+$this->html->css('test');
 foreach($this->html->css() as $css):?>
 	<link rel="stylesheet" type="text/css" href="<?=strpos($css,'://')?$css:$css.'.cs'.$suf?>" />
 <?endforeach;
@@ -43,6 +41,14 @@ if($this->html->G['css']) echo "\t<style type=\"text/css\">".$this->html->G['css
 	foreach($this->html->js() as $js):?><script type="text/javascript" src="<?=strpos($js,'://')?$js:$js.'.j'.$suf?>"></script><?endforeach;
 	if($this->html->G['js']) echo '<script type="text/javascript">'.$this->html->G['js'].'</script>';
 ?>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-79508217-1"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','UA-79508217-1')</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("topnav");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+</script>
 </body></html>

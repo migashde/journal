@@ -1,4 +1,3 @@
-.main-body|p.t=100|
 .center|max.w=$wf,m=0.au,po=re,p=1.0|
 .header|c=#f,po=f,l,r,lh=20,z=8888,ba=#f,t,-bs=0.2.2.r0;0;0;20|
 />.center|h=100,-bz=bb,p=20.0|
@@ -32,4 +31,3 @@
 / .content p|ti=30|
 +:first-child|m.t|
 +:last-child|m.b|
-.banner|po=f,t=110,l=50%,w=120,h=500,ba=^j/donatebnr.c.c.nr.$c[2],cu=p,-bs=1.1.5.r0;0;0;30|
