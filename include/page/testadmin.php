@@ -1,5 +1,5 @@
 <?php
-if(!$this->acc->logged()) $this->module('main>login');
+if(!$this->acc->logged()) $this->req->url('test3');
 else{
   if($this->acc->admin){
     if(isset($_POST['filedata'])){
@@ -26,7 +26,7 @@ else{
     $fp=$a[0];
     define('ADMIN',true);
     $this->tit('Админ хуудас');
-    $this->module('admin/'.array_shift($a));
+    $this->module('testadmin/'.array_shift($a));
   }
   else $this->req->url('');
 }

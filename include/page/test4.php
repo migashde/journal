@@ -24,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $email = filter_var($email, FILTER_VALIDATE_EMAIL);
     $address = $_POST['address'];
     $driver_license = '';
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = md5($_POST['password']);
 
     if($_POST["driver_license"]) {
       $i = 0;

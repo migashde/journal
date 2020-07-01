@@ -2,8 +2,6 @@
 
 $this->js('test5');
 
-
-
 $error = '';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){

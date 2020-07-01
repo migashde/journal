@@ -11,7 +11,7 @@ class Account{
 	public  $editor				= false;
 	public function __construct(){
 		$this->_start();
-		$this->admin=intval($this->id)===1;
+		$this->admin=intval($this->id)===5;
 		$this->editor=intval($this->id)<4;
 	}
 	public function initSess(){if(!isset($_SESSION[$this->sSessKey])) $this->_reset();$this->a=$this->_data();}

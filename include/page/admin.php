@@ -1,5 +1,5 @@
 <?php
-if(!$this->acc->logged()) $this->module('main>login');
+if(!$this->acc->logged()) $this->req->url('test3');
 else{
 	if($this->acc->admin){
 		if(isset($_POST['filedata'])){
