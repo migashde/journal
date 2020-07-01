@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
   $query=$this->db->fetch("SELECT * FROM articles WHERE id='$postid'");
   
 } else {
-  header('Location:');
+  $this->req->url('@');
 }
 
 ?>

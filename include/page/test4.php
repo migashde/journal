@@ -1,10 +1,12 @@
 <?php
 
+$this->js('test4');
+
 if ($this->cs->is('id')==2) {
-    header('Location: test');
+    $this->req->url('@');
 }
 
-
+$error = '';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -54,22 +56,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         'passwd' => $password
       ));
     } else {
-
-      header('Location: register?error=1');
+      $error = 'Утасны дугаар, имэйлийг өөр хэрэглэгч ашигласан байна!';
     }
 
 
     
-  } else {
-    header('Location: register?error=2');
-  }
-}
-
-
-$error = '';
-if (isset($_GET['error'])) {
-  if ($_GET['error']==1) {
-    $error = 'Утасны дугаар, имэйлийг өөр хэрэглэгч ашигласан байна!';
   } else {
     $error = 'Нууц үг тохирсонгүй!';
   }
@@ -84,8 +75,8 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
     <?php if($error!=''){echo '<p style="color:brown">'.$error.'</p>';}?>
       <form id="regform" name="regform" method="post" onsubmit="return validateworm()">
           <div class="form-group">
-            <label for="name">Овог:</label>
-            <input type="text" id="fname" class="form-c" name="family_name" placeholder="Овог" >
+            <label for="family_name">Овог:</label>
+            <input type="text" id="family_name" class="form-c" name="family_name" placeholder="Овог" >
             <span id="fnamet" class="wtext"></span>
           </div>
           <div class="form-group">
@@ -94,20 +85,20 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
             <span id="namet" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Хүйс:</label>
+            <label for="huis">Хүйс:</label>
             <div class="form-group"><input type="radio" id="huis1" name="huis" value="Эр" checked=""><label for="huis1">Эр</label></div>
           <div class="form-group"><input type="radio" id="huis2" name="huis" value="Эм"><label for="huis2">Эм</label></div>
           <div class="form-group"><input type="radio" id="huis3" name="huis" value="Бусад"><label for="huis3">Бусад</label></div>
             <span id="huist" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Төрсөн огноо:</label>
-            <input type="date" class="form-c" name="birthday" placeholder="Төрсөн огноо"  min="1900-01-01" max="<?php echo date("Y-m-d");?>" value="<?php echo date("Y-m-d");?>">
+            <label for="birthday">Төрсөн огноо:</label>
+            <input type="date" class="form-c" id="birthday" name="birthday" placeholder="Төрсөн огноо"  min="1900-01-01" max="<?php echo date("Y-m-d");?>" value="<?php echo date("Y-m-d");?>">
             <span id="birthdayt" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Мэргэжил:</label>
-            <select class="form-c" name="prof">
+            <label for="prof">Мэргэжил:</label>
+            <select class="form-c" name="prof" id="prof">
               <?php
                 if (mysqli_num_rows($profs)==0) {
                   echo "<option>Уучлаарай сонгох мэргэжил алга</option>";
@@ -123,8 +114,8 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
             <span id="proft" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Регистрийн дугаар:</label>
-            <select name="personal1" class="form-c form-personal" id="personal1">
+            <label for="personal_id personal1 personal2">Регистрийн дугаар:</label>
+            <select name="personal1" class="form-c form-personal" aria-labelledby="personal_id">
               <option value="А">А</option>
               <option value="Б">Б</option>
               <option value="В">В</option>
@@ -161,7 +152,7 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
               <option value="Ю">Ю</option>
               <option value="Я">Я</option>
             </select>
-            <select name="personal2" class="form-c form-personal" id="personal2">
+            <select name="personal2" class="form-c form-personal" aria-labelledby="personal_id">
               <option value="А">А</option>
               <option value="Б">Б</option>
               <option value="В">В</option>
@@ -198,28 +189,28 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
               <option value="Ю">Ю</option>
               <option value="Я">Я</option>
             </select>
-            <input type="number" id="personal" class="form-c form-personaler" name="personal_id" placeholder="Регистрийн дугаараа энд бичнэ үү">
+            <input type="number" id="personal_id" class="form-c form-personaler" name="personal_id" placeholder="Регистрийн дугаараа энд бичнэ үү">
             <span id="personalt" class="wtext"></span>
             <span id="personalt2"></span>
           </div>
           <div class="form-group">
-            <label for="name">Утасны дугаар:</label>
+            <label for="phone">Утасны дугаар:</label>
             <input type="number" id="phone" id="phonen" class="form-c" name="phone" placeholder="Утасны дугаараа энд бичнэ үү">
             <span id="phonet" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Имэйл:</label>
+            <label for="email">Имэйл:</label>
             <input type="email" id="email" class="form-c" name="email" placeholder="Имэйл хаягаа энд бичнэ үү" >
             <span id="emailt" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Гэрийн хаяг:</label>
+            <label for="address">Гэрийн хаяг:</label>
             <input type="text" id="address" class="form-c" name="address" placeholder="Гэрийн хаягаа энд бичнэ үү" >
             <span id="addresst" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Жолооны үнэмлэхтэй эсэх:</label>
-            <select class="form-c" id="driver" name="driver_license[]" multiple>
+            <label for="driver_license">Жолооны үнэмлэхтэй эсэх:</label>
+            <select class="form-c" id="driver_license" name="driver_license[]" multiple>
               <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -229,12 +220,12 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
             <span id="drivert" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Нууц үг:</label>
+            <label for="pass">Нууц үг:</label>
             <input type="password" id="pass" class="form-c" name="password" placeholder="Нууц үгээ бичнэ үү" >
             <span id="passt" class="wtext"></span>
           </div>
           <div class="form-group">
-            <label for="name">Нууц үг давтах:</label>
+            <label for="pass2">Нууц үг давтах:</label>
             <input type="password" id="pass2" class="form-c" name="password2" placeholder="Нууц үгээ давтаж бичнэ үү" >
             <span id="pass2t" class="wtext"></span>
           </div>

@@ -3,7 +3,7 @@ defined('ROOT') or die('Access denied !!!');
 class Account{
 	public  $id					= null;
 	public  $a					= [];
-	public  $sTbl				= 'admins';
+	public  $sTbl				= 'users';
 	private $sSessKey			= 'legal_acc-data';
 	private $sCookieKey			= '_AUTO_LOGIN_KEY';
 	private $aSessionHandle		= [];

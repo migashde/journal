@@ -1,5 +1,5 @@
 <?$aTit=$this->html->tit();$sBase=$this->req->url('base');
-$aTit[]='Зөв Хүн Электорат эвслийн албан ёсны сайт';
+$aTit[]='Journal';
 $sep=' - ';
 $edited=6;
 $f=$this->req->url('first');

@@ -4,7 +4,7 @@ if (isset($_GET['cat'])) {
   $catid = $_GET['cat'];
   $query=$this->db->fetch("SELECT * FROM articles WHERE cat_id='$catid'");
 } else {
-  header('Location:');
+  $this->req->url('@');
 }
 
 ?>

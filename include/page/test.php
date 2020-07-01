@@ -10,8 +10,8 @@ $query=$this->db->fetch('SELECT * FROM articles ORDER BY id DESC');
     else
     {
       while ($row=mysqli_fetch_array($query)) {
-		
-		$query4=$this->db->fetch('SELECT * FROM article_cats WHERE id = '.$row['cat_id'].'');
+
+        $query4=$this->db->fetch('SELECT * FROM article_cats WHERE id = '.$row['cat_id'].'');
 
         $str = $row["content"];
         $str = wordwrap($str, 28);

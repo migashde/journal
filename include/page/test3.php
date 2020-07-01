@@ -1,11 +1,13 @@
 <?php
 
+$this->tit('Нэвтрэх хэсэг');
 ob_start();
 session_start();
 
 $login = $password = "";
 $login_err = $password_err = "";
 
+$error = '';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(empty(trim($_POST["login"]))){
@@ -52,38 +54,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				
 	            if ($prev_url == '../') {
 					if ($type == 'admin') {
-						header("Location: test");
+						$this->req->url('test');
 					} else {
-						header("Location: test");
+						$this->req->url('test');
 					}
 				} else {
-	              header("Location: ".$prev_url);
+        			$this->req->url($prev_url);
 	            }
 				
             } else {
-                header('Location: test3?error=1');
+            	$error = 'Нууц үг буруу байна!';
             }
 
         } else{
-        	header('Location: test3?error=2');
+        	$error = 'Тохирох хаяг олдсонгүй';
         }
+    } else {
+    	$error = 'Имэйл, утасны дугаар эсвэл нууц үгээ бүрэн оруулна уу!';
     }
 }
-
 if (isset($_GET['url'])) {
   $prev_url = $_GET['url'];
 } else {
   $prev_url = '../';
 }
 
-$error = '';
-if (isset($_GET['error'])) {
-  if ($_GET['error']==1) {
-    $error = 'Нууц үг буруу байна!';
-  } else {
-    $error = 'Тохирох хаяг олдсонгүй';
-  }
-}
 ?>
 <main id="main" class="wrapper" role="main">
 	<section class="midform">

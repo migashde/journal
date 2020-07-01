@@ -1,36 +1,33 @@
 <?php
-$query=$this->db->fetch('SELECT * FROM articles ORDER BY id DESC');
-?>
-<main id="main" class="wrapper" role="main">
-  <section id="contents">
-    <?php
-    if (mysqli_num_rows($query)==0) {
-      echo "<b style='color:brown;'>Уучлаарай одоогоор нийтлэл алга байна. Та дараа дахин шалгана уу! </b> <br><br>";
-    }
-    else
-    {
-      while ($row=mysqli_fetch_array($query)) {
-		
-		$query4=$this->db->fetch('SELECT * FROM article_cats WHERE id = '.$row['cat_id'].'');
-
-        $str = $row["content"];
-        $str = wordwrap($str, 28);
-        $str = explode("\n", $str);
-        $str = $str[0] . '...';
-        echo '<a href="test1?id='.$row["id"].'">
-        <article class="post">
-          <div class="post-image" style="background: url(sdata/uploads/images/image_'.$row["media"].') center center;background-size: cover; ">
-          </div>
-          <div class="post-content">
-            <h2 class="post-title">'.$row["title"].'</h2>
-            <div class="meta">'.$row["created_date"].'</div>
-            <div class="desc">'.$str.'</div>
-          </div>
-        </article>
-        </a>';
+if(!$this->acc->logged()) $this->module('main>login');
+else{
+  if($this->acc->admin){
+    if(isset($_POST['filedata'])){
+      list($mime,$str)=explode(';base64,',$_POST['filedata'],2);
+      $mime=str_replace('data:','',$mime);
+      if($mime=='image/png'){
+        $fn=$this->file->genFn();
+        $d=$this->str->rand(1);
+        if(!file_exists(CFILE.$d.DS)) mkdir(CFILE.$d.DS,0777);
+        $p=CFILE.$d.DS.$fn.'.png';
+        file_put_contents($p,base64_decode($str));
+        $this->core->load('Image','img',[CFILE.'t/']);
+        $dir=date('y');
+        $thumb=$this->file->genFn();
+        $this->img->dir($dir)->name($thumb)->size('120:120:xv')->crop($p);
+        $thumb=$dir.'/'.$thumb;
+        $this->db->modify('files',['dir'=>$d,'filename'=>$fn,'title'=>$fn,'size'=>filesize($p),'uploaded'=>time(),'is_img'=>1,'ext'=>'png','thumb'=>$thumb]);
+        echo 'f/'.$d.'/'.$fn.'.png';
       }
+      die();
     }
-    ?>
-  </section>
-  <?$this->module('main/sidebar');?>
-</main>
+    $a=$this->req->url('dirs');
+    array_shift($a);
+    $fp=$a[0];
+    define('ADMIN',true);
+    $this->tit('Админ хуудас');
+    $this->module('admin/'.array_shift($a));
+  }
+  else $this->req->url('');
+}
+?>

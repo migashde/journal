@@ -1,34 +1,40 @@
 <?php
+
+$this->js('test5');
+
 if ($this->cs->is('id')==0) {
-    header('Location: test3');
+    $this->req->url('test3');
 }
+
+$error = '';
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-$family_name = $_POST['family_name'];
-$name = $_POST['name'];
-$huis = $_POST['huis'];
-$birthday = $_POST['birthday'];
-$prof = $_POST['prof'];
-$personal1 = $_POST['personal1'];
-$personal2 = $_POST['personal2'];
-$personal_id = $_POST['personal_id'];
-$phone = $_POST['phone'];
-$email = trim(htmlspecialchars($_POST['email']));
-$email = filter_var($email, FILTER_VALIDATE_EMAIL);
-$address = $_POST['address'];
-$driver_license = '';
+  $family_name = $_POST['family_name'];
+  $name = $_POST['name'];
+  $huis = $_POST['huis'];
+  $birthday = $_POST['birthday'];
+  $prof = $_POST['prof'];
+  $personal1 = $_POST['personal1'];
+  $personal2 = $_POST['personal2'];
+  $personal_id = $_POST['personal_id'];
+  $phone = $_POST['phone'];
+  $email = trim(htmlspecialchars($_POST['email']));
+  $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+  $address = $_POST['address'];
+  $driver_license = '';
 
-if($_POST["driver_license"]) {
-  $i = 0;
-  foreach ($_POST['driver_license'] as $subject){
-    if ($i == 0) {
-      $driver_license = $subject;
-    } else {
-      $driver_license = $driver_license.','.$subject;
+  if($_POST["driver_license"]) {
+    $i = 0;
+    foreach ($_POST['driver_license'] as $subject){
+      if ($i == 0) {
+        $driver_license = $subject;
+      } else {
+        $driver_license = $driver_license.','.$subject;
+      }
+      $i++;
     }
-    $i++;
   }
-}
 
   $sql = 'SELECT email, phone FROM users WHERE email = "'.$email.'" OR phone = "'.$phone.'"';
 
@@ -50,19 +56,10 @@ if($_POST["driver_license"]) {
     $_SESSION['login'] = $family_name.' '.$name;
 
 
-    header('Location: test5?sent');
+    $this->req->url('test5?sent');
   } else {
-    header('Location: test5?error=1');
+    $error = 'Утасны дугаар, имэйлийг өөр хэрэглэгч ашигласан байна!';
   }
-}
-
-$error = '';
-if (isset($_GET['error'])) {
-    if ($_GET['error']==1) {
-        $error = 'Утасны дугаар, имэйлийг өөр хэрэглэгч ашигласан байна!';
-    } else {
-      $error = 'Нууц үг тохирсонгүй!';
-    }
 }
 
 $user=$this->db->fetch('SELECT * FROM users WHERE id = "'.$this->cs->get('id').'"', 4);
@@ -76,8 +73,8 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
       <form id="upform" name="upform" method="post" onsubmit="return validateform()">
         <?php if(isset($user)) {
           echo '<input type="hidden" name="id" value="'.$user['id'].'"><div class="form-group">
-          <label for="name">Овог:</label>
-          <input type="text" id="fname"  class="form-c" name="family_name" value="'.$user['family_name'].'">
+          <label for="family_name">Овог:</label>
+          <input type="text" id="family_name"  class="form-c" name="family_name" value="'.$user['family_name'].'">
             <span id="fnamet" class="wtext"></span>
         </div>
         <div class="form-group">
@@ -86,7 +83,7 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
             <span id="namet" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Хүйс:</label>
+          <label for="huis">Хүйс:</label>
           ';
           $huiser = '';
           $huisem = '';
@@ -107,13 +104,13 @@ $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
             <span id="huist" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Төрсөн огноо:</label>
-          <input type="date" class="form-c" name="birthday" value="'.$user['birthday'].'" min="1900-01-01" max="'.date("Y-m-d").'">
+          <label for="birthday">Төрсөн огноо:</label>
+          <input type="date" class="form-c" id="birthday" name="birthday" value="'.$user['birthday'].'" min="1900-01-01" max="'.date("Y-m-d").'">
             <span id="birthdayt" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Мэргэжил:</label>
-          <select class="form-c" name="prof">'
+          <label for="prof">Мэргэжил:</label>
+          <select class="form-c" id="prof" name="prof">'
           ;
           if (mysqli_num_rows($profs)==0) {
                 echo "<option>Уучлаарай сонгох мэргэжил алга</option>";
@@ -138,8 +135,8 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
             <span id="proft" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Регистрийн дугаар:</label>
-          <select name="personal1" class="form-c form-personal" id="personal1">
+          <label for="personal_id">Регистрийн дугаар:</label>
+          <select name="personal1" id="personal1" class="form-c form-personal" aria-labelledby="personal_id">
               <option value="'.$per1.'" selected>'.$per1.'</option>
               <option value="А">А</option>
               <option value="Б">Б</option>
@@ -177,7 +174,7 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
               <option value="Ю">Ю</option>
               <option value="Я">Я</option>
             </select>
-            <select name="personal2" class="form-c form-personal" id="personal2">
+            <select name="personal2" id="personal2" class="form-c form-personal" aria-labelledby="personal_id">
               <option value="'.$per2.'" selected>'.$per2.'</option>
               <option value="А">А</option>
               <option value="Б">Б</option>
@@ -215,28 +212,28 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
               <option value="Ю">Ю</option>
               <option value="Я">Я</option>
             </select>
-          <input type="number" id="personal" class="form-c form-personaler" name="personal_id" placeholder="Регистрийн дугаараа энд бичнэ үү" value="'.$per3.'">
+          <input type="number" id="personal_id" class="form-c form-personaler" name="personal_id" placeholder="Регистрийн дугаараа энд бичнэ үү" value="'.$per3.'">
             <span id="personalt" class="wtext"></span>
             <span id="personalt2"></span>
         </div>
         <div class="form-group">
-          <label for="name">Утасны дугаар:</label>
+          <label for="phone">Утасны дугаар:</label>
           <input type="number" id="phone" class="form-c" name="phone" value="'.$user['phone'].'">
             <span id="phonet" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Имэйл:</label>
+          <label for="email">Имэйл:</label>
           <input type="email" id="email" class="form-c" name="email" value="'.$user['email'].'">
             <span id="emailt" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Гэрийн хаяг:</label>
-          <input type="text" id="address class="form-c" name="address" value="'.$user['address'].'">
+          <label for="address">Гэрийн хаяг:</label>
+          <input type="text" id="address" class="form-c" name="address" value="'.$user['address'].'">
             <span id="addresst" class="wtext"></span>
         </div>
         <div class="form-group">
-          <label for="name">Жолооны үнэмлэхтэй эсэх:</label>
-          <select class="form-c" name="driver_license[]" multiple>
+          <label for="driver_license">Жолооны үнэмлэхтэй эсэх:</label>
+          <select class="form-c" id="driver_license" name="driver_license[]" multiple>
           ';
 
           $drived = explode(',', $user['driver_license']);
@@ -278,95 +275,3 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
       </form>
   </section>
 </main>
-<script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
-<script>
-function validateform() {
-  var d = 0;
-  var x = document.forms["upform"]["family_name"].value;
-  if (x == "") {
-    var element = document.getElementById("fname");
-    element.classList.add("warning");
-    $("#fnamet").text("Та овог заавал бичсэн байх шаардлагатай");
-    d++;
-  }
-  var x2 = document.forms["upform"]["name"].value;
-  if (x2 == "") {
-    var element = document.getElementById("name");
-    element.classList.add("warning");
-    $("#namet").text("Та нэр заавал бичсэн байх шаардлагатай");
-    d++;
-  }
-  var x3 = document.forms["upform"]["personal_id"].value;
-  if (x3 == ""||x3 < 10000000||x3 > 99999999) {
-    var element = document.getElementById("personal");
-    element.classList.add("warning");
-    $("#personalt").text("Та регистрийн дугаар заавал бичсэн байх шаардлагатай");
-    d++;
-  }
-  var x4 = document.forms["upform"]["phone"].value;
-  if (x4 == ""||x4 < 10000000||x4 > 99999999) {
-    var element = document.getElementById("phone");
-    element.classList.add("warning");
-    $("#phonet").text("Та утасны дугаараа заавал бичсэн байх шаардлагатай");
-    d++;
-  }
-  var x5 = document.forms["upform"]["email"].value;
-  if (x5 == "") {
-    var element = document.getElementById("email");
-    element.classList.add("warning");
-    $("#emailt").text("Та имэйл заавал бичсэн байх шаардлагатай");
-    d++;
-  }
-  if (d > 0) {
-    return false;
-  }
-}
-$(document).ready(function(){
-  $("#fname").keypress(function(){
-    var element = document.getElementById("fname");
-    element.classList.remove("warning");
-    $("#fnamet").text("");
-  });
-  $("#name").keypress(function(){
-    var element = document.getElementById("name");
-    element.classList.remove("warning");
-    $("#namet").text("");
-  });
-  $("#personal").keyup(function(){
-    var element = document.getElementById("personal");
-    element.classList.remove("warning");
-    $("#personalt").text("");
-    var personaler = document.forms["upform"]["personal_id"].value;
-    if (personaler < 10000000||personaler > 99999999) {
-      $("#personalt2").text("Таны регистр зөв байх ёстой");
-    } else {
-      $("#personalt2").text("");
-    }
-  });
-  $("#phone").keyup(function(){
-    var element = document.getElementById("phone");
-    element.classList.remove("warning");
-    $("#phonet").text("");
-    var phoner = document.forms["upform"]["phone"].value;
-    if (phoner < 10000000||phoner > 99999999) {
-      $("#phonet").text("Таны утасны дугаар зөв байх ёстой");
-      return false;
-    } else {
-      $("#phonet").text("");
-    }
-  });
-  $("#email").keypress(function(){
-    var element = document.getElementById("email");
-    element.classList.remove("warning");
-    $("#emailt").text("");
-  });
-  $("#fname").keypress(function(){
-    var element = document.getElementById("fname");
-    element.classList.remove("warning");
-    $("#fnamet").text("");
-  });
-});
-</script>
