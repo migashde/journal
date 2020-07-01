@@ -21,7 +21,7 @@ class Account{
 		$this->aSessionHandle=array_merge($this->aSessionHandle,$a);
 		return $this;
 	}
-	public function name($a=[],$bFullName=false){if(is_bool($a)){$bFullName=$a;$a=[];}$a=$a?:$this->a;return '<div class="user'.($bFullName?' fullnamed':'').'"><img src="'.$this->img($a).'" /><b>'.($bFullName?'<span>'.$a['firstname'].'</span> ':'').$a['lastname'].'</b></div>';}
+	public function name($a=[],$bFullName=false){if(is_bool($a)){$bFullName=$a;$a=[];}$a=$a?:$this->a;return ($bFullName?''.$a['family_name'].' ':'').$a['name'].'';}
 	public function img($a=[]){$a=$a?:$this->a;return 'u/'.(isset($a['image'])&&file_exists(AVTR.$f.$a['image'].'.jpg')?$a['image']:'blank_'.(isset($a['gender'])?($a['gender']=='m'?'':'fe').'male':'unknown')).'.jpg';}
 	public function byup($a=[]){
 		if($this->id) return true;
@@ -32,7 +32,7 @@ class Account{
 		$fld='username';
 		if(strpos($u,'@')) $fld='email';
 		elseif(is_numeric($u)) $fld='phone';
-		return $this->_login('('.($fld!='username'?'`'.$fld.'`="'.$u.'" OR ':'').'`username`="'.$u.'") AND `password`="'.$p.'"',isset($a['r'])&&$a['r']||in_array('r',$a));
+		return $this->_login('('.($fld!='username'?'`'.$fld.'`="'.$u.'" OR ':'').'`username`="'.$u.'") AND `passwd`="'.$p.'"',isset($a['r'])&&$a['r']||in_array('r',$a));
 	}
 	public function byid($id){return $this->_login($id);}
 	public function byemail($email){return $this->_login('`email`="'.$this->db->esc($email).'"');}

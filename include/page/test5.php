@@ -2,9 +2,7 @@
 
 $this->js('test5');
 
-if ($this->cs->is('id')==0) {
-    $this->req->url('test3');
-}
+
 
 $error = '';
 
@@ -51,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       'email' => $email,
       'address' => $address,
       'driver_license' => $driver_license
-    ), 'id = "'.$this->cs->get('id').'"');
+    ), 'id = "'.$this->acc->id.'"');
 
     $_SESSION['login'] = $family_name.' '.$name;
 
@@ -62,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 }
 
-$user=$this->db->fetch('SELECT * FROM users WHERE id = "'.$this->cs->get('id').'"', 4);
+$user=$this->db->fetch('SELECT * FROM users WHERE id = "'.$this->acc->id.'"', 4);
 
 $profs=$this->db->fetch('SELECT * FROM profs ORDER BY id DESC');
 ?>
@@ -137,7 +135,6 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
         <div class="form-group">
           <label for="personal_id">Регистрийн дугаар:</label>
           <select name="personal1" id="personal1" class="form-c form-personal" aria-labelledby="personal_id">
-              <option value="'.$per1.'" selected>'.$per1.'</option>
               <option value="А">А</option>
               <option value="Б">Б</option>
               <option value="В">В</option>
@@ -175,7 +172,6 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
               <option value="Я">Я</option>
             </select>
             <select name="personal2" id="personal2" class="form-c form-personal" aria-labelledby="personal_id">
-              <option value="'.$per2.'" selected>'.$per2.'</option>
               <option value="А">А</option>
               <option value="Б">Б</option>
               <option value="В">В</option>
@@ -269,6 +265,10 @@ $per3 = mb_substr($user["personal_id"], 2, 8);
           </select>
             <span id="drivert" class="wtext"></span>
         </div>';
+        echo "<script>
+        $('#personal1').val('".$per1."').prop('selected', true);
+        $('#personal2').val('".$per2."').prop('selected', true);
+        </script>";
         }?>
 
         <button type="submit" class="btn btn-success">Засах</button>

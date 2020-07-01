@@ -18,12 +18,12 @@ $cats=$this->db->fetch('SELECT * FROM article_cats ORDER BY id DESC');
         }
       ?>
       <div class="sep">|</div>
-      <?php if($this->cs->is('id') == 0):?>
-      <a class="btn" href="test3">нэвтрэх</a>
-      <a class="btn" href="test4">бүртгүүлэх</a>
-      <?php else:?>
+      <?php if($this->acc->logged()):?>
       <a class="btn" href="test5"><?=$this->cs->get('login');?></a>
       <a class="btn" href="test6">гарах</a>
+      <?php else:?>
+      <a class="btn" href="test3">нэвтрэх</a>
+      <a class="btn" href="test4">бүртгүүлэх</a>
       <?php endif;?>
 
       <?php if($this->cs->is('id') == 2&&$this->cs->get('type')== 'admin'):?>
