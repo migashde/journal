@@ -50,7 +50,7 @@ if($_POST["driver_license"]) {
     $_SESSION['login'] = $family_name.' '.$name;
 
 
-    header('Location: test3?sent');
+    header('Location: test5?sent');
   } else {
     header('Location: test5?error=1');
   }
